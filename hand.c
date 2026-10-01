@@ -37,9 +37,11 @@ SDL_AppInit(void **appstate, int argc, char *argv[])
     SDL_IOStream *hand_io = SDL_IOFromConstMem(hand_png, sizeof(hand_png));
     SDL_Surface *hand_surf = SDL_LoadPNG_IO(hand_io, true);
     hand = SDL_CreateTextureFromSurface(renderer, hand_surf);
+    SDL_DestroySurface(hand_surf);
     SDL_IOStream *hand_press_io = SDL_IOFromConstMem(hand_press_png, sizeof(hand_press_png));
     SDL_Surface *hand_press_surf = SDL_LoadPNG_IO(hand_press_io, true);
     hand_press = SDL_CreateTextureFromSurface(renderer, hand_press_surf);
+    SDL_DestroySurface(hand_press_surf);
 
     return SDL_APP_CONTINUE;
 }
