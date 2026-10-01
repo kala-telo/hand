@@ -1,3 +1,4 @@
+#include <SDL3/SDL_video.h>
 #define SDL_MAIN_USE_CALLBACKS 1
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
@@ -25,7 +26,7 @@ SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    if (!SDL_CreateWindowAndRenderer("hand", 76, 304, SDL_WINDOW_TRANSPARENT|SDL_WINDOW_RESIZABLE|SDL_WINDOW_ALWAYS_ON_TOP, &window, &renderer)) {
+    if (!SDL_CreateWindowAndRenderer("hand", 76, 304, SDL_WINDOW_TRANSPARENT|SDL_WINDOW_RESIZABLE|SDL_WINDOW_ALWAYS_ON_TOP|SDL_WINDOW_BORDERLESS, &window, &renderer)) {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
@@ -49,6 +50,7 @@ SDL_AppInit(void **appstate, int argc, char *argv[])
 SDL_AppResult
 SDL_AppEvent(void *appstate, SDL_Event *event)
 {
+    bool bordered;
     switch (event->type) {
     case SDL_EVENT_QUIT:
         return SDL_APP_SUCCESS;
@@ -57,6 +59,11 @@ SDL_AppEvent(void *appstate, SDL_Event *event)
         break;
     case SDL_EVENT_MOUSE_BUTTON_UP:
         pressed = false;
+        break;
+    case SDL_EVENT_KEY_DOWN:
+        if (event->key.key != SDLK_B) break;
+        bordered = (SDL_GetWindowFlags(window) & SDL_WINDOW_BORDERLESS) != 0;
+        SDL_SetWindowBordered(window, bordered);
         break;
     }
     return SDL_APP_CONTINUE;
