@@ -26,7 +26,7 @@ SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    if (!SDL_CreateWindowAndRenderer("hand", 76, 304, SDL_WINDOW_TRANSPARENT|SDL_WINDOW_RESIZABLE|SDL_WINDOW_ALWAYS_ON_TOP|SDL_WINDOW_BORDERLESS, &window, &renderer)) {
+    if (!SDL_CreateWindowAndRenderer("hand", 76, 304, SDL_WINDOW_TRANSPARENT|SDL_WINDOW_RESIZABLE|SDL_WINDOW_ALWAYS_ON_TOP|SDL_WINDOW_BORDERLESS|SDL_WINDOW_UTILITY, &window, &renderer)) {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
