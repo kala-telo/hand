@@ -65,10 +65,7 @@ SDL_AppIterate(void *appstate)
 {
     SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
     SDL_RenderClear(renderer);
-    int w,h;
-    SDL_GetWindowSize(window, &w, &h);
-    SDL_FRect dst = {0, 0, w, h};
-    SDL_RenderTexture(renderer, pressed ? hand_press : hand, NULL, &dst); 
+    SDL_RenderTexture(renderer, pressed ? hand_press : hand, NULL, NULL); 
     SDL_RenderPresent(renderer);
     return SDL_APP_CONTINUE;
 }
