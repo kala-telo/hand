@@ -6,4 +6,4 @@ so you can point at things
 ## Controls
 - <kbd>B</kbd> - enable/disable window border, useful for dragging on systems like Windows
 - *any mouse button* - do the thing
-[images source](https://makerworld.com/en/models/1295430-cartoon-hand-pointer-stick-single-finger#profileId-1326617)
+# [images source](https://makerworld.com/en/models/1295430-cartoon-hand-pointer-stick-single-finger#profileId-1326617)
