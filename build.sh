@@ -1,2 +1,2 @@
 #!/bin/sh
-cc -lSDL3 hand.c -o hand
+cc -O2 -lSDL3 hand.c -o hand
